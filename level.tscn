@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd2tkovb2dkiw"]
+
+[ext_resource type="PackedScene" uid="uid://bkjxof0rc1ka" path="res://assets/ground.blend" id="1_tya8n"]
+[ext_resource type="PackedScene" uid="uid://bjyygyh6aaq83" path="res://car.tscn" id="2_1n01k"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_obeg5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_m2mdk"]
+sky_material = SubResource("ProceduralSkyMaterial_obeg5")
+
+[sub_resource type="Environment" id="Environment_i43w1"]
+background_mode = 2
+sky = SubResource("Sky_m2mdk")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i43w1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ground" parent="." instance=ExtResource("1_tya8n")]
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.920634, 0.390426, 0, -0.390426, 0.920634, 0, 10.2966, 13.1116)
+
+[node name="Gamera" type="Camera3D" parent="Pivot"]
+transform = Transform3D(0.778561, -0.245019, 0.577762, 0.245019, 0.966246, 0.079594, -0.577762, 0.079594, 0.812315, 9.48441, -1.8218, 2.30407)
+
+[node name="car" parent="." instance=ExtResource("2_1n01k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.904, 0, -3)

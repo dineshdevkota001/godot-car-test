@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjyygyh6aaq83"]
+
+[ext_resource type="Script" path="res://car.gd" id="1_tcc0h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s6qoj"]
+size = Vector3(1.5, 1, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ijw23"]
+size = Vector3(1.5, 1, 3)
+
+[node name="car" type="VehicleBody3D"]
+mass = 200.0
+script = ExtResource("1_tcc0h")
+
+[node name="Back-r" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.823493, 0.499166, 0.946692)
+use_as_traction = true
+
+[node name="Front-r" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.823493, 0.499166, -0.912268)
+use_as_steering = true
+
+[node name="Back-l" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.828916, 0.499166, 0.946692)
+use_as_traction = true
+
+[node name="Front-l" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.828916, 0.499166, -0.912268)
+use_as_steering = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79178, 0)
+shape = SubResource("BoxShape3D_s6qoj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.818704, 0)
+mesh = SubResource("BoxMesh_ijw23")
